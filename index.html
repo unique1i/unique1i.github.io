@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yue Li - Homepage</title>
+    <link rel="icon" type="image/ico" href="media/logos/icon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #FFFCF4; /* soft yellow #FFFCF4 */ 
+            background-color: #fcf9f1; /* soft yellow #FFFCF4 */ 
             color: #4F6071;  /* Added this line */
             opacity: 0;
-            animation: fadeIn 2s ease-in forwards;
+            animation: fadeIn 1.5s ease-in forwards;
         }
 
         @keyframes fadeIn {
@@ -28,7 +29,7 @@
             padding: 20px;
             border-radius: 10px;
             background-color: #f0ead66f; /* Soft pastel green */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.12);
         }
 
         header {
@@ -50,7 +51,7 @@
             padding: 20px;
             border-radius: 10px;
             margin-bottom: 15px;
-            width: 70%;  /* Reduced width of the content sections */
+            width: 75%;  /* Reduced width of the content sections */
             margin-left: auto;
             margin-right: auto;
         }
@@ -88,19 +89,37 @@
             padding-left: 0px;
         }
 
-        /* .profile-photo {
-            max-height: 175px;
-            border-radius: 50%;
+        .profile-photo {
+            max-height: 400px; /* Adjust the height as needed */
+            max-width: 200px;  /* Adjust the width as needed */
+            border-radius: 15px 15px 15px 15px; /* Round the top and bottom corners */
+            object-fit: cover; /* Ensures the image covers the area without stretching */
             margin-left: 20px;
             margin-top: 20px;
-        } */
-        .profile-photo {
-        max-height: 400px; /* Adjust the height as needed */
-        max-width: 200px;  /* Adjust the width as needed */
-        border-radius: 15px 15px 15px 15px; /* Round the top and bottom corners */
-        object-fit: cover; /* Ensures the image covers the area without stretching */
-        margin-left: 20px;
-        margin-top: 20px;
+        }
+
+        .university-logos {
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            gap: 30px; /* Adjust the gap between images as needed */
+        }
+
+        .logo {
+            width: auto; /* Fixed width for the images */
+            height: 60px;  /* Maintain aspect ratio */
+        }
+        .ethz-logo {
+            height: 32px; 
+        }
+        .sjtu-logo {
+            height: 60px; 
+        }
+        .uva-logo {
+            height: 32px; 
+        }
+        .kit-logo {
+            height: 40px; 
         }
     </style>
 </head>
@@ -113,11 +132,15 @@
                     <h1>Yue Li&nbsp;&nbsp;&nbsp;李跃</h1>
                     <p>PhD Candidate at <a href="https://icai.ai/atlas-lab/" rel="external nofollow noopener" target="_blank">Atlas Lab</a>, <br> 
                     <a href="https://www.uva.nl/en/about-the-uva/about-the-university/about-the-university.html" rel="external nofollow noopener" target="_blank">University of Amsterdam</a></p>
+                    <p>
+                        <a href="mailto:y.li6@uva.nl" rel="external nofollow noopener" target="_blank">Email</a> |
+                        <a href="https://scholar.google.com/citations?user=ITJvLUsAAAAJ&hl=en" rel="external nofollow noopener" target="_blank">Google Scholar</a> |
+                        <a href="https://www.linkedin.com/in/unique-li/" rel="external nofollow noopener" target="_blank">LinkedIn</a>
+                    </p>
                 </div>
                 <img src="media/yue.jpg" alt="Your Photo" class="profile-photo">
             </div>
         </header>
-
 
         <section>
             <h2>About Me</h2>
@@ -135,8 +158,15 @@
                 both in Mechanical Engineering.
             </p>
             <p>
-                Feel free to reach out via y.li6 [at] uva [dot] nl.
+                I am open for collaborations, feel free to drop me a message!
             </p>
+
+            <div class="university-logos">
+                <img src="media/logos/UvA.png" alt="University of Amsterdam" class="logo uva-logo">
+                <img src="media/logos/ETHZ.png" alt="ETH Zurich" class="logo ethz-logo">
+                <img src="media/logos/SJTU.png" alt="Shanghai Jiao Tong University" class="logo sjtu-logo">
+                <img src="media/logos/KIT.png" alt="Karlsruhe Institute of Technology" class="logo kit-logo">
+            </div>
         </section>
 
         <section>
