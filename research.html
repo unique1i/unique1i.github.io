@@ -42,6 +42,15 @@
             text-decoration: underline;
         }
 
+        .project {
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .project.fade-in {
+            opacity: 1;
+        }
+
         /* Additional styling can be added as needed */
 
     </style>
@@ -53,8 +62,62 @@
         <tbody>
             <tr>
                 <td width="45%" valign="center" align="center">
-                    <!-- Embedding video instead of image -->
-                    <video width="90%" style="margin-top:20px;padding-top:0px;padding-bottom:0px" controls autoplay muted loading="lazy">
+                    <video id="video4" width="90%" style="margin-top:20px;padding-top:0px;padding-bottom:0px" preload="auto" muted loading="lazy">
+                        <source src="media/shapesplat_demo.mp4" type="video/mp4">
+                        Video is not supported in current browser.
+                    </video>
+                </td>
+                <td width="60%" valign="top">
+                    <p>
+                        <papertitle>ShapeSplat: A Large-scale Dataset of Gaussian Splats and Their Self-Supervised Pretraining</papertitle>
+                        <br>
+                        <a href="https://qimaqi.github.io/" rel="external nofollow noopener" target="_blank">Qi Ma*</a>, 
+                        Yue Li*, 
+                        <a href="https://amazingren.github.io/" rel="external nofollow noopener" target="_blank">Bin Ren</a>
+                        <a href="https://disi.unitn.it/~sebe/" rel="external nofollow noopener" target="_blank">Nicu Sebe</a>,
+                        <a href="https://people.ee.ethz.ch/~kender/" rel="external nofollow noopener" target="_blank">Ender Konukoglu</a>,, 
+                        <a href="https://staff.science.uva.nl/th.gevers/" rel="external nofollow noopener" target="_blank">Theo Gevers</a>
+                        <a href="https://insait.ai/prof-luc-van-gool/" rel="external nofollow noopener" target="_blank">Luc Van Gool</a>
+                        <a href="https://insait.ai/dr-danda-paudel/" rel="external nofollow noopener" target="_blank">Danda Pani Paudel</a>
+                    </p>
+                    <div>arXiv 2024</div>
+                    <div class="paper" id="shapesplat"> 
+                        <a href="https://unique1i.github.io/ShapeSplat/" rel="external nofollow noopener" target="_blank">Webpage</a> | 
+                        <a href="https://arxiv.org/abs/2408.10906" rel="external nofollow noopener" target="_blank">Paper</a> |
+                        <a href="https://youtu.be/5TnfkO3WdMk" rel="external nofollow noopener" target="_blank">Video</a> | 
+                        <a href="https://github.com/qimaqi/ShapeSplats-Gaussian-MAE.git" rel="external nofollow noopener" target="_blank">Code</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td width="45%" valign="center" align="center">
+                    <video id="video3" width="90%" style="margin-top:20px;padding-top:0px;padding-bottom:0px" preload="auto" muted loading="lazy">
+                        <source src="media/loopsplat_vis.mp4" type="video/mp4">
+                        Video is not supported in current browser.
+                    </video>
+                </td>
+                <td width="60%" valign="top">
+                    <p>
+                        <papertitle>LoopSplat: Loop Closure by Registering 3D Gaussian Splats</papertitle>
+                        <br>
+                        <a href="https://www.zhuliyuan.net/" rel="external nofollow noopener" target="_blank">Liyuan Zhu</a>, 
+                        Yue Li, 
+                        <a href="https://eriksandstroem.github.io/" rel="external nofollow noopener" target="_blank">Erik Sandström</a>, 
+                        <a href="https://shengyuh.github.io/" rel="external nofollow noopener" target="_blank">Shengyu Huang</a>
+                        <a href="https://prs.igp.ethz.ch/group/people/person-detail.schindler.html/" rel="external nofollow noopener" target="_blank">Konrad Schindler</a>
+                        <a href="https://ir0.github.io/" rel="external nofollow noopener" target="_blank">Iro Armeni</a>
+                    </p>
+                    <div>arXiv 2024</div>
+                    <div class="paper" id="loopsplat"> 
+                        <a href="https://loopsplat.github.io/" rel="external nofollow noopener" target="_blank">Webpage</a> | 
+                        <a href="http://arxiv.org/abs/2408.10154" rel="external nofollow noopener" target="_blank">Paper</a> | 
+                        <a href="https://github.com/GradientSpaces/LoopSplat" rel="external nofollow noopener" target="_blank">Code</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td width="45%" valign="center" align="center">
+                    <video id="video2" width="90%" style="margin-top:20px;padding-top:0px;padding-bottom:0px" preload="auto" muted loading="lazy">
                         <source src="media/gaussian_slam_demo.mp4" type="video/mp4">
                         Video is not supported in current browser.
                     </video>
@@ -79,8 +142,7 @@
             </tr>
             <tr>
                 <td width="45%" valign="center" align="center">
-                    <!-- Embedding video instead of image -->
-                    <video width="90%" style="margin-top:20px;padding-top:0px;padding-bottom:0px" controls autoplay muted loading="lazy">
+                    <video id="video1" width="90%" style="margin-top:20px;padding-top:0px;padding-bottom:0px" preload="auto" muted loading="lazy">
                         <source src="media/point_slam_demo.mp4" type="video/mp4">
                         Video is not supported in current browser.
                     </video>
@@ -106,6 +168,31 @@
         </tbody>
     </table>
 </div>
+
+<script>
+    // Array to hold all video elements
+    const videos = [
+        document.getElementById('video1'),
+        document.getElementById('video2'),
+        document.getElementById('video3'),
+        document.getElementById('video4')
+    ];
+
+    let loadedVideos = 0;
+
+    // Function to check if all videos are loaded
+    function checkAllVideosLoaded() {
+        loadedVideos++;
+        if (loadedVideos === videos.length) {
+            videos.forEach(video => video.play());
+        }
+    }
+
+    // Attach the loadeddata event to each video
+    videos.forEach(video => {
+        video.addEventListener('loadeddata', checkAllVideosLoaded, false);
+    });
+</script>
 
 </body>
 </html>
