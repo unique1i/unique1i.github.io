@@ -103,6 +103,7 @@
             justify-content: left;
             align-items: center;
             gap: 30px; /* Adjust the gap between images as needed */
+            flex-wrap: wrap; /* Allow the logos to wrap to the next line */
         }
 
         .logo {
@@ -120,6 +121,26 @@
         }
         .kit-logo {
             height: 40px; 
+        }
+        /* Media query for small screens */
+        @media screen and (max-width: 600px) {
+            .university-logos {
+                justify-content: center; /* Center logos on small screens */
+                gap: 20px; /* Reduce gap between logos for better fitting */
+            }
+            .logo {
+                height: 50px; /* Slightly reduce height on smaller screens */
+            }
+            .ethz-logo,
+            .uva-logo {
+                height: 24px; /* Adjust heights for smaller screens */
+            }
+            .sjtu-logo {
+                height: 40px; /* Adjust heights for smaller screens */
+            }
+            .kit-logo {
+                height: 25px; /* Adjust heights for smaller screens */
+            }
         }
     </style>
 </head>
