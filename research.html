@@ -63,12 +63,65 @@
             <tr>
                 <td width="45%" valign="center" align="center">
                     <video id="video4" width="90%" style="margin-top:20px;padding-top:0px;padding-bottom:0px" preload="auto" muted autoplay loop  loading="lazy">
-                        <source src="media/shapesplat_demo.mp4" type="video/mp4">
+                        <source src="media/scenesplat_demo.mp4" type="video/mp4">
                         Video is not supported in current browser.
                     </video>
                 </td>
                 <td width="60%" valign="top">
                     <p>
+                        <papertitle>
+                        SceneSplat: Gaussian Splatting-based Scene Understanding with Vision-Language Pretraining
+                        </papertitle>
+                        <br>
+                    
+                        <!-- Visible authors (first 3) -->
+                        <u>Yue Li</u>*,
+                        <a href="https://qimaqi.github.io/" rel="external nofollow noopener" target="_blank">Qi Ma*</a>,
+                        <a href="https://runyiyang.github.io/" rel="external nofollow noopener" target="_blank">Runyi Yang</a>,
+                    
+                        <!-- The clickable span which toggles more authors -->
+                        <span class="more-authors" style="cursor: pointer"
+                            onclick="
+                                var isExpanded = $(this).data('expanded');
+                                if (!isExpanded) {
+                                // Expand: show all authors
+                                $(this).html(`<a href='https://scholar.google.com/citations?user=LkF7__QAAAAJ' rel='external nofollow noopener' target='_blank'>Huapeng Li</a>,
+                                                <a href='https://scholar.google.com/citations?user=4_JSQPQAAAAJ' rel='external nofollow noopener' target='_blank'>Mengjiao Ma</a>,
+                                                <a href='https://amazingren.github.io/' rel='external nofollow noopener' target='_blank'>Bin Ren</a>,
+                                                <a href='https://scholar.google.com/citations?user=aY2lypgAAAAJ' rel='external nofollow noopener' target='_blank'>Nikola Popovic</a>,
+                                                <a href='https://disi.unitn.it/~sebe/' rel='external nofollow noopener' target='_blank'>Nicu Sebe</a>,
+                                                <a href='https://people.ee.ethz.ch/~kender/' rel='external nofollow noopener' target='_blank'>Ender Konukoglu</a>,
+                                                <a href='https://staff.science.uva.nl/th.gevers/' rel='external nofollow noopener' target='_blank'>Theo Gevers</a>,
+                                                <a href='https://insait.ai/prof-luc-van-gool/' rel='external nofollow noopener' target='_blank'>Luc Van Gool</a>,
+                                                <a href='https://oswaldm.github.io/' rel='external nofollow noopener' target='_blank'>Martin R. Oswald</a>,
+                                                <a href='https://insait.ai/dr-danda-paudel/' rel='external nofollow noopener' target='_blank'>Danda Pani Paudel</a>`);
+                                $(this).data('expanded', true);
+                                } else {
+                                // Collapse: revert to '10 more authors'
+                                $(this).html('10 more authors').data('expanded', false);
+                                }
+                            ">
+                         10 more authors
+                        </span>
+                    </p>     
+                    <div>arXiv 2025</div>
+                    <div class="paper" id="shapesplat"> 
+                        Webpage | 
+                        Paper |
+                        Video | 
+                        Code (come later)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td width="45%" valign="center" align="center">
+                    <video id="video4" width="90%" style="margin-top:20px;padding-top:0px;padding-bottom:0px" preload="auto" muted autoplay loop  loading="lazy">
+                        <source src="media/shapesplat_demo.mp4" type="video/mp4">
+                        Video is not supported in current browser.
+                    </video>
+                </td>
+                <td width="60%" valign="top">
+                    <p style="margin-bottom: 1px;">
                         <papertitle>ShapeSplat: A Large-scale Dataset of Gaussian Splats and Their Self-Supervised Pretraining</papertitle>
                         <br>
                         <a href="https://qimaqi.github.io/" rel="external nofollow noopener" target="_blank">Qi Ma*</a>, 
@@ -80,7 +133,7 @@
                         <a href="https://insait.ai/prof-luc-van-gool/" rel="external nofollow noopener" target="_blank">Luc Van Gool</a>,
                         <a href="https://insait.ai/dr-danda-paudel/" rel="external nofollow noopener" target="_blank">Danda Pani Paudel</a>
                     </p>
-                    <div style="color: red;">3DV 2025 Oral</div>
+                    <div style="color: red; margin-top: 0px;">3DV 2025 Oral</div>
                     <div class="paper" id="shapesplat"> 
                         <a href="https://unique1i.github.io/ShapeSplat/" rel="external nofollow noopener" target="_blank">Webpage</a> | 
                         <a href="https://arxiv.org/abs/2408.10906" rel="external nofollow noopener" target="_blank">Paper</a> |
@@ -190,28 +243,23 @@
     </table>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <script>
-    // Array to hold all video elements
-    const videos = [
-        document.getElementById('video1'),
-        document.getElementById('video2'),
-        document.getElementById('video3'),
-        document.getElementById('video4')
-    ];
+    // Query all video elements on the page
+    const videos = Array.from(document.querySelectorAll('video'));
 
     let loadedVideos = 0;
-
-    // Function to check if all videos are loaded
     function checkAllVideosLoaded() {
-        loadedVideos++;
-        if (loadedVideos === videos.length) {
-            videos.forEach(video => video.play());
-        }
+    loadedVideos++;
+    if (loadedVideos === videos.length) {
+        videos.forEach(video => video.play());
+    }
     }
 
-    // Attach the loadeddata event to each video
+    // start playing simultaneously when all videos are loaded
     videos.forEach(video => {
-        video.addEventListener('loadeddata', checkAllVideosLoaded, false);
+    video.addEventListener('loadeddata', checkAllVideosLoaded, false);
     });
 </script>
 
