@@ -81,26 +81,26 @@
                     
                         <!-- The clickable span which toggles more authors -->
                         <span class="more-authors" style="cursor: pointer"
-                            onclick="
-                                var isExpanded = $(this).data('expanded');
-                                if (!isExpanded) {
-                                // Expand: show all authors
-                                $(this).html(`<a href='https://scholar.google.com/citations?user=LkF7__QAAAAJ' rel='external nofollow noopener' target='_blank'>Huapeng Li</a>,
-                                                <a href='https://scholar.google.com/citations?user=4_JSQPQAAAAJ' rel='external nofollow noopener' target='_blank'>Mengjiao Ma</a>,
-                                                <a href='https://amazingren.github.io/' rel='external nofollow noopener' target='_blank'>Bin Ren</a>,
-                                                <a href='https://scholar.google.com/citations?user=aY2lypgAAAAJ' rel='external nofollow noopener' target='_blank'>Nikola Popovic</a>,
-                                                <a href='https://disi.unitn.it/~sebe/' rel='external nofollow noopener' target='_blank'>Nicu Sebe</a>,
-                                                <a href='https://people.ee.ethz.ch/~kender/' rel='external nofollow noopener' target='_blank'>Ender Konukoglu</a>,
-                                                <a href='https://staff.science.uva.nl/th.gevers/' rel='external nofollow noopener' target='_blank'>Theo Gevers</a>,
-                                                <a href='https://insait.ai/prof-luc-van-gool/' rel='external nofollow noopener' target='_blank'>Luc Van Gool</a>,
-                                                <a href='https://oswaldm.github.io/' rel='external nofollow noopener' target='_blank'>Martin R. Oswald</a>,
-                                                <a href='https://insait.ai/dr-danda-paudel/' rel='external nofollow noopener' target='_blank'>Danda Pani Paudel</a>`);
-                                $(this).data('expanded', true);
-                                } else {
-                                // Collapse: revert to '10 more authors'
-                                $(this).html('10 more authors').data('expanded', false);
-                                }
-                            ">
+                        onclick="
+                        var isExpanded = $(this).data('expanded');
+                        if (!isExpanded) {
+                            // Expand: show all authors
+                            $(this).html(`<span class='expanded-authors'><a href='https://scholar.google.com/citations?user=LkF7__QAAAAJ' rel='external nofollow noopener' target='_blank'>Huapeng Li</a>,
+                                            <a href='https://scholar.google.com/citations?user=4_JSQPQAAAAJ' rel='external nofollow noopener' target='_blank'>Mengjiao Ma</a>,
+                                            <a href='https://amazingren.github.io/' rel='external nofollow noopener' target='_blank'>Bin Ren</a>,
+                                            <a href='https://scholar.google.com/citations?user=aY2lypgAAAAJ' rel='external nofollow noopener' target='_blank'>Nikola Popovic</a>,
+                                            <a href='https://disi.unitn.it/~sebe/' rel='external nofollow noopener' target='_blank'>Nicu Sebe</a>,
+                                            <a href='https://people.ee.ethz.ch/~kender/' rel='external nofollow noopener' target='_blank'>Ender Konukoglu</a>,
+                                            <a href='https://staff.science.uva.nl/th.gevers/' rel='external nofollow noopener' target='_blank'>Theo Gevers</a>,
+                                            <a href='https://insait.ai/prof-luc-van-gool/' rel='external nofollow noopener' target='_blank'>Luc Van Gool</a>,
+                                            <a href='https://oswaldm.github.io/' rel='external nofollow noopener' target='_blank'>Martin R. Oswald</a>,
+                                            <a href='https://insait.ai/dr-danda-paudel/' rel='external nofollow noopener' target='_blank'>Danda Pani Paudel</a></span>`);
+                            $(this).data('expanded', true);
+                        } else {
+                            // Collapse: revert to '10 more authors'
+                            $(this).html('10 more authors').data('expanded', false);
+                        }
+                        ">
                          10 more authors
                         </span>
                     </p>     
@@ -262,6 +262,27 @@
     video.addEventListener('loadeddata', checkAllVideosLoaded, false);
     });
 </script>
+
+<script>
+    // Add a custom function to notify the parent when author list expands
+    function notifyParentOfResize() {
+        // Send a message to the parent window to resize the iframe
+        if (window.parent && window.parent !== window) {
+            window.parent.postMessage({ type: 'resizeIframe', height: document.body.scrollHeight + 30 }, '*');
+        }
+    }
+    
+    // Find all expandable author elements and add click listeners
+    document.addEventListener('DOMContentLoaded', function() {
+        const expandableElements = document.querySelectorAll('.more-authors');
+        expandableElements.forEach(element => {
+            element.addEventListener('click', function() {
+                // Give time for the DOM to update after expanding/collapsing
+                setTimeout(notifyParentOfResize, 50);
+            });
+        });
+    });
+    </script>
 
 </body>
 </html>

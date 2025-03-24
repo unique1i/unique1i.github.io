@@ -195,7 +195,7 @@
             <table>
                 <tr>
                   <!-- First row: symbol in first cell, text in second cell -->
-                  <td style="vertical-align: top;">*&#8202;&#8202;&#8202;&#8202;&#8239;</td>
+                  <td style="vertical-align: top;">*</td>
                   <td>denotes equal contribution</td>
                 </tr>
                 <tr>
@@ -206,7 +206,7 @@
             </table>
               
             <!-- Embedding the publications.html using object tag -->
-            <iframe id="pubObject" src="research.html" width="100%" style="border:none;min-height: 700px; transition: height 0.5s ease;"></iframe>
+            <iframe id="pubObject" src="research.html" width="100%" style="border:none; min-height: 700px; overflow:hidden; transition: height 0.5s ease;"></iframe>
         </section>
 
         <section>
@@ -253,6 +253,22 @@
     adjustIframeHeight();
     };
     </script>
+
+<script>
+    // Listen for resize messages from the iframe
+    window.addEventListener('message', function(event) {
+        // Check if the message is the resize event we're looking for
+        if (event.data && event.data.type === 'resizeIframe') {
+            const iframe = document.getElementById('pubObject');
+            const newHeight = event.data.height;
+            
+            // Only update if we got a valid height
+            if (newHeight && newHeight > 0) {
+                iframe.style.height = newHeight + 'px';
+            }
+        }
+    }, false);
+</script>
 
 </body>
 </html>
